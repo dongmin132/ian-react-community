@@ -1,0 +1,67 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    height: 104px;
+    width: 600px;
+    font-size: 32px;
+    align-items: center;
+}
+a{text-decoration: none;}
+.back {
+   color: black;
+   /* visibility: hidden; */
+}
+
+.small-profile {
+    display: block;
+    width: 36px;
+    height:36px;
+}
+
+.real {
+    display:block;
+    position: relative;
+
+}
+.dropdown {
+    display: none;
+    
+    right:-27px;
+    overflow: auto;
+
+
+    font-size: 12px;
+    width: 115px;
+    height: 105px;
+    background: #D9D9D9;
+}
+
+.real:hover .dropdown {
+    display:flex;
+    flex-direction: column;
+    position:absolute;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.sub {
+    color: black;
+    display: flex; /* Flexbox 사용 */
+    justify-content: center; /* 수평으로 가운데 정렬 */
+    align-items: center; /* 수직으로 가운데 정렬 */
+    height:35px;
+    width:115px;
+    text-align: center;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.sub:hover {
+    background-color: #eaeaea;
+}
+
+hr {
+    border:none;
+    border-bottom: 1px solid;
+    width: 100%;
+    margin: 0;
+}

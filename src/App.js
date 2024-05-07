@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import Header from './components/Header';
 import Register from "./pages/Register";
 import Boards from "./pages/Boards";
+import BoardRegister from "./pages/BoardReigster";
 import { AuthProvider } from "./context/AuthContext";
 
 const Wrapper = styled.div`
@@ -42,6 +43,7 @@ function App() {
               <Route index element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/boards" element={<Boards />} />
+              <Route path="/boards/register" element={<BoardRegister />} />
             </Routes>
           </Main>
         </Wrapper>

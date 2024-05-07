@@ -6,6 +6,12 @@
     font-size: 32px;
     align-items: center;
 }
+
+.home {
+    cursor:pointer;
+    font-weight: bold;
+}
+
 a{text-decoration: none;}
 .back {
    color: black;

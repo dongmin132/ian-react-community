@@ -9,9 +9,10 @@ border-radius: 10px;
 background-color: #ACA0EB;
 color:white;
 border:none;
+cursor: pointer;
 `
 
-const Button = ({onClick, title}) => {
-    return <StyledButton onClick={onClick}>{title}</StyledButton>
+const Button = ({onClick, title, className}) => {
+    return <StyledButton onClick={onClick} className={className}>{title}</StyledButton>
 }
 export default Button;

@@ -9,6 +9,7 @@ border-radius: 10px;
 background-color: #ACA0EB;
 color:white;
 border:none;
+cursor: pointer;
 `
 
 const Button = ({onClick, title, className}) => {

@@ -53,7 +53,7 @@ const Header = () => {
         <>
             <div className="header">
                 <Link to="/" className="back" style={{ visibility: backButton ? "visible" : "hidden" }}>&lt;</Link>
-                <span className="home" onClick={() => navigate("/")}> 아무말 대잔치</span>
+                <span className="home" onClick={() => navigate("/boards")}> 아무말 대잔치</span>
                 <div className="real" style={{ visibility: profileImg ? 'visible' : 'hidden' }}>
                     <img src={profileImg} className="small-profile" id="small-profile" alt="Profile" ></img>
                     <div className="dropdown">

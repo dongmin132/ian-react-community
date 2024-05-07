@@ -21,7 +21,7 @@ const Boards = () => {
     return (
         <>
             <StyledContent style={{textAlign : "center"}}>안녕하세요,<br></br>아무 말 대잔치 <b>게시판</b> 입니다.</StyledContent>
-            <StyledButton title="게시글 작성" />
+            <StyledButton title="게시글 작성" onClick={() => navigate(`/boards/register`)}/>
             <BoardList onClickItem={(boardId) => {
                         navigate(`/boards/${boardId}`);
                     }}/>

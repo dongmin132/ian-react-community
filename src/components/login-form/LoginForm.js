@@ -36,14 +36,14 @@ const LogginForm = () => {
             body: jsonData,
             credentials: "include"
         });
-        if (response.ok) {
-            // 버튼 비활성화
-            console.log("요청 여러번")
+        if (response.ok) {          
+            console.log("여러번 실행되나요?")  
             setTimeout(() => {
                 alert("로그인 성공");
                 setIsSubmitting(false);
             }, 3000);
         } else {
+            alert(jsonData)
             setIsSubmitting(false);
             alert("로그인 실패");
         }
@@ -51,8 +51,8 @@ const LogginForm = () => {
     };
     return (
         <Form>
-            <Input title = "이메일" type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-            <Input title = "비밀번호" type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+            <Input type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} title = "이메일"/>
+            <Input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} title = "비밀번호" />
             <TextHelper>아직 회원이 아니신가요?</TextHelper>
             <Button onClick={handleSubmit} title="로그인" >Log in</Button>
         </Form>

@@ -17,7 +17,8 @@ margin-bottom: 10px;
 `
 
 
-const ProfileImage = ({ src }) => {
+const ProfileImage = ({onChangeFile}) => {
+    const src = null;
     const [image, setImage] = useState(src|| `${process.env.PUBLIC_URL}/images/default-profile.png`);
     const fileInput = useRef(null);
 

@@ -8,7 +8,6 @@ const Register = () => {
         <>
             <Title title="회원가입" />
             <RegisterForm />
-            <Button title="회원가입"></Button>
             <a href="/login" style={{ textDecoration: 'none', color:'black'}}>로그인하러가기</a >
         </>
     );

@@ -16,7 +16,7 @@ const Input = (props) => {
     return (
         <>
             <StyledTitle>{props.title}</StyledTitle>
-            <StyledInput />
+            <StyledInput type={props.type} value={props.value} onChange={props.onChange} placeholder={props.placeholder}/>
         </>
     );
 }

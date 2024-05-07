@@ -9,6 +9,8 @@ import Login from './pages/Login';
 import Header from './components/Header';
 import Register from "./pages/Register";
 import Boards from "./pages/Boards";
+import { AuthProvider } from "./context/AuthContext";
+
 const Wrapper = styled.div`
   display:flex;
   flex-direction: column;
@@ -29,18 +31,21 @@ const Main = styled.div`
 
 
 function App() {
+
   return (
     <BrowserRouter>
-      <Wrapper>
-        <Header isLoggedIn={false} back={false} />
-        <Main>
-          <Routes>
-            <Route index element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/boards" element={<Boards />} />
-          </Routes>
-        </Main>
-      </Wrapper>
+      <AuthProvider>
+        <Wrapper>
+          <Header back={false} />
+          <Main>
+            <Routes>
+              <Route index element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/boards" element={<Boards />} />
+            </Routes>
+          </Main>
+        </Wrapper>
+      </AuthProvider>
     </BrowserRouter>
   );
 }

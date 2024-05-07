@@ -17,32 +17,20 @@ margin-bottom: 10px;
 `
 
 
-const ProfileImage = ({onChangeFile}) => {
-    const src = null;
-    const [image, setImage] = useState(src|| `${process.env.PUBLIC_URL}/images/default-profile.png`);
+const ProfileImage = (props) => {
+    
+    
     const fileInput = useRef(null);
-
     const openFileUploader = () => {
         fileInput.current.click();
     };
 
-    const handleFileChange = (e) => {
-        const file = e.target.files[0];
-        if(file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setImage(reader.result);
-            };
-            reader.readAsDataURL(file);
-        } else {
-            setImage(`${process.env.PUBLIC_URL}/images/default-profile.png`);
-        }
-    };
+
 
     return (
         <StyledCircle  className='circle' onClick={openFileUploader}>
-            <img src={ image } style={{ width: '100%', height: '100%'}} />
-            <input ref={fileInput} style={{ display: 'none' }} type="file" name="image" accept="image/*" onChange={handleFileChange}></input>
+            <img src={ props.image } style={{ width: '100%', height: '100%'}} />
+            <input ref={fileInput} style={{ display: 'none' }} type="file" name="image" accept="image/*" onChange={props.onChange}></input>
         </StyledCircle>
     );
 }

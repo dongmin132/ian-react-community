@@ -11,7 +11,7 @@ color:white;
 border:none;
 `
 
-const Button = ({onClick, title}) => {
-    return <StyledButton onClick={onClick}>{title}</StyledButton>
+const Button = ({onClick, title, className}) => {
+    return <StyledButton onClick={onClick} className={className}>{title}</StyledButton>
 }
 export default Button;

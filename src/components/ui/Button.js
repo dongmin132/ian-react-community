@@ -13,6 +13,5 @@ border:none;
 
 const Button = ({onClick, title}) => {
     return <StyledButton onClick={onClick}>{title}</StyledButton>
-    
 }
 export default Button;

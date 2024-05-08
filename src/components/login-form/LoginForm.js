@@ -4,6 +4,9 @@ import Button from "../ui/Button"
 import { useState } from 'react';
 import Input from '../ui/Input';
 import { useAuth } from '../../context/AuthContext';
+import Loading from '../ui/Loading';
+import { useNavigate } from 'react-router-dom';
+
 const Form = styled.form`
 display: flex;
 align-items: center;
@@ -15,15 +18,17 @@ font-weight: bold;
 `
 
 
-const LogginForm = ({ onLogin }) => {
+const LogginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     // const [isSubmitting, setIsSubmitting] = useState(false);
-    const {setIsLoggedIn} = useAuth();  
+    const [isLoading, setIsLoading] = useState(false);
+    const {setIsLoggedIn} = useAuth(); 
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        // setIsSubmitting(true);
+        setIsLoading(true);
 
         const data = { email, password };
         const jsonData = JSON.stringify(data);
@@ -39,18 +44,16 @@ const LogginForm = ({ onLogin }) => {
             credentials: "include"
         });
         if (response.ok) {          
-            console.log("여러번 실행되나요?")  
             setTimeout(() => {
                 setIsLoggedIn(true);
                 alert("로그인 성공");
-                // setIsSubmitting(false);
+                setIsLoading(false);
+                navigate("/boards");
             }, 3000);
         } else {
-            alert(jsonData)
-            // setIsSubmitting(false);
             alert("로그인 실패");
+            setIsLoading(false);
         }
-        
     };
     return (
         <Form>
@@ -58,6 +61,7 @@ const LogginForm = ({ onLogin }) => {
             <Input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} title = "비밀번호" />
             <TextHelper>아직 회원이 아니신가요?</TextHelper>
             <Button onClick={handleSubmit} title="로그인" >Log in</Button>
+            {isLoading && <Loading/>}
         </Form>
     );
 }

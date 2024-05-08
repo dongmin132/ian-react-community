@@ -52,7 +52,7 @@ const Header = () => {
     return (
         <>
             <div className="header">
-                <Link to="/" className="back" style={{ visibility: backButton ? "visible" : "hidden" }}>&lt;</Link>
+                <span className="back" style={{ visibility: backButton ? "visible" : "hidden" ,cursor:"pointer"}} onClick={()=>navigate(-1)}>&lt;</span>
                 <span className="home" onClick={() => navigate("/boards")}> 아무말 대잔치</span>
                 <div className="real" style={{ visibility: profileImg ? 'visible' : 'hidden' }}>
                     <img src={profileImg} className="small-profile" id="small-profile" alt="Profile" ></img>

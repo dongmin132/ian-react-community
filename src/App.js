@@ -11,6 +11,7 @@ import Register from "./pages/Register";
 import Boards from "./pages/Boards";
 import BoardRegister from "./pages/BoardReigster";
 import { AuthProvider } from "./context/AuthContext";
+import Loading from "./components/ui/Loading";
 
 const Wrapper = styled.div`
   display:flex;
@@ -44,6 +45,7 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/boards" element={<Boards />} />
               <Route path="/boards/register" element={<BoardRegister />} />
+              <Route path="/boards/spinner" element={<Loading />} />
             </Routes>
           </Main>
         </Wrapper>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Button from "../../ui/Button";
-import CommentList from "./CommentList";
+
 const Form = styled.form`
 display: flex;
 flex-direction: column;
@@ -31,15 +31,12 @@ align-self: flex-end;
 `
 
 
-const CommentRegisterForm = (boardId) => {
+const CommentRegisterForm = () => {
     return (
-        <>
         <Form >
             <InputComment type="text" name="comment" placeholder="댓글입력"></InputComment>
             <BoardButton title="댓글작성" />
         </Form>
-        <CommentList />
-        </>
     )
 }
 export default CommentRegisterForm;

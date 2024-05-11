@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { BoardButtons, Button } from '../BoardInfoStyled';
 import { BASE_URL } from '../../../config/BaseUrl';
+import { useAuth } from '../../../context/AuthContext';
 const CommentListItemStyled = styled.div`
 display: flex;
 justify-content: space-between;

@@ -1,14 +1,13 @@
-import styled from "styled-components";
 import BoardListItem from "./BoardListItem";
-import { BASE_URL } from "../../config/BaseUrl";
 import { useEffect, useState } from "react";
 
 
 const BoardList = ({ onClickItem }) => {
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
     const [boards, setBoards] = useState([]);
     const url = `${BASE_URL}/boards`;
 
-    useEffect(() => {
+    useEffect(function getBoardList() {
         fetch(url, {
             credentials: "include"
         })

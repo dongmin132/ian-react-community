@@ -1,13 +1,13 @@
-import BoardContent from "./BoardContent";
-import BoardInfo from "./BoardInfo";
-import CommentRegisterForm from "./comments/CommentRegisterForm";
+import BoardContent from "../components/board-detail-form/BoardContent";
+import BoardInfo from "../components/board-detail-form/BoardInfo";
+import CommentRegisterForm from "../components/board-detail-form/comments/CommentRegisterForm";
 import { useParams } from "react-router-dom";
-import {  useEffect, useState } from "react";
-import CommentList from "./comments/CommentList";
-import { BASE_URL } from "../../config/BaseUrl";
+import { createContext, useEffect, useState } from "react";
+import CommentList from "../components/board-detail-form/comments/CommentList";
+import { BASE_URL } from "../config/BaseUrl";
 
 //클라이언트 환경변수
-// export const UserIdContext = createContext();
+export const UserIdContext = createContext();
 
 const BoardDetail = () => {
     const { boardId } = useParams();
@@ -36,13 +36,14 @@ const BoardDetail = () => {
 
 
     return (
-        
-        <>
-            <BoardInfo board={board} />
-            <BoardContent board={board} />
-            <CommentRegisterForm />
-            <CommentList comments={comments}/>
 
+        <>
+            <UserIdContext.Provider value={{ userId }}>
+                <BoardInfo board={board} />
+                <BoardContent board={board} />
+                <CommentRegisterForm />
+                <CommentList comments={comments} />
+            </UserIdContext.Provider>
         </>
     )
 }

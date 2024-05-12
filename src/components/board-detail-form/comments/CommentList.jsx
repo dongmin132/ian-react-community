@@ -8,6 +8,7 @@ const CommentListStyled = styled.div`
     align-items: center;
     width: 100%;
     gap: 20px;
+    margin-bottom: 20px;
 `
 
 const CommentList = ({comments}) => {

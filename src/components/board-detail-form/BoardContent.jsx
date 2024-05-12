@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import { Section, Square, Image, Content, CommentLike, View, BoldText } from './BoardContentStyled';
+import { Section, Square, Image, Content, CommentLike, View } from './BoardContentStyled';
 
 
 const BoardContent = ({board}) => {
     const BASE_URL = process.env.REACT_APP_BASE_URL;
     return (
         <Section>
-            <Square>
-                <Image src={BASE_URL+board.contentImage} id="image" />
-            </Square>
+            {board.contentImage?<Square>
+                <Image src={BASE_URL+board.contentImage}/>
+            </Square>:<></>}
             <Content>{board.content}</Content>
 
             <CommentLike>

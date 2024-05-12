@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { BoardButtons, Button } from '../BoardInfoStyled';
 import { BASE_URL } from '../../../config/BaseUrl';
-import { useAuth } from '../../../context/AuthContext';
+import { useContext } from 'react';
+import { UserIdContext } from '../../../pages/BoardDetail';
+
 const CommentListItemStyled = styled.div`
 display: flex;
 justify-content: space-between;
@@ -52,7 +54,9 @@ margin-left: 40px;
 overflow-wrap: break-word; /* 공백 없이 긴 문자열도 줄바꿈 */
 word-break: break-all; /* 단어의 중간에서도 줄바꿈 */
 `
-const CommentListItem = ({ comment,userId }) => {
+const CommentListItem = ({ comment }) => {
+    const userId = useContext(UserIdContext).userId;
+
     return (
 
         <CommentListItemStyled>

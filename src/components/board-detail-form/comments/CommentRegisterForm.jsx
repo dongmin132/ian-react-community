@@ -6,7 +6,7 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-mpaddin:20px 0px 20px 0px;
+margin:20px 0px 20px 0px;
 
 width: 592px;
 height: 169px;

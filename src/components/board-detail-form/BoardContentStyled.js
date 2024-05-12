@@ -5,8 +5,10 @@ display: flex;
 flex-direction: column;
 justify-content: space-around;
 align-items: center;
-width: 544px;
-height: 750px;
+width: 592px;
+height: 700px;
+border-bottom: 1px solid #D9D9D9;
+margin-bottom: 30px;
 `
 
 export const Square = styled.div`

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { BoardButtons, Button } from '../BoardInfoStyled';
 import { BASE_URL } from '../../../config/BaseUrl';
-import { useContext } from 'react';
+import { createContext, useContext } from 'react';
 import { UserIdContext } from '../../../pages/BoardDetail';
 
 const CommentListItemStyled = styled.div`
@@ -54,9 +54,13 @@ margin-left: 40px;
 overflow-wrap: break-word; /* 공백 없이 긴 문자열도 줄바꿈 */
 word-break: break-all; /* 단어의 중간에서도 줄바꿈 */
 `
-const CommentListItem = ({ comment }) => {
-    const userId = useContext(UserIdContext).userId;
 
+
+const CommentListItem = ({ comment, setEditingComment }) => {
+    const userId = useContext(UserIdContext).userId;
+    const handleEditClick = () => {
+        setEditingComment({id:comment.id,content:comment.content})
+    }
     return (
 
         <CommentListItemStyled>
@@ -71,13 +75,13 @@ const CommentListItem = ({ comment }) => {
 
                 <CommentContent >{comment.content}</CommentContent>
             </CommentBlock>
-            {userId===comment.userId ? (
-            <BoardButtons className="board-buttons">
-                <Button>수정</Button>
-                <Button>삭제</Button>
-            </BoardButtons>
-            ):(<></>)}
-            
+            {userId === comment.userId ? (
+                <BoardButtons className="board-buttons">
+                    <Button onClick={handleEditClick}>수정</Button>
+                    <Button>삭제</Button>
+                </BoardButtons>
+            ) : (<></>)}
+
         </CommentListItemStyled>
 
     )

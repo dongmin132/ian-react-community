@@ -11,12 +11,12 @@ const CommentListStyled = styled.div`
     margin-bottom: 20px;
 `
 
-const CommentList = ({comments}) => {
+const CommentList = ({comments, setEditingComment}) => {
     return (
         <CommentListStyled>
             {comments.map((comment) => {
                 return (
-                    <CommentListItem key={comment.id} comment={comment} />
+                    <CommentListItem key={comment.id} comment={comment} setEditingComment={setEditingComment} />
                 )
             })}
         </CommentListStyled>

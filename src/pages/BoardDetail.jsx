@@ -14,6 +14,7 @@ const BoardDetail = () => {
     const BASE_URL = process.env.REACT_APP_BASE_URL;
     const [board, setBoard] = useState({});
     const [comments, setComments] = useState([]);
+    const [editingComment, setEditingComment] = useState(false);
     const [userId, setUserId] = useState('');
     const url = `${BASE_URL}/boards/${boardId}`;
 
@@ -41,8 +42,8 @@ const BoardDetail = () => {
             <UserIdContext.Provider value={{ userId }}>
                 <BoardInfo board={board} />
                 <BoardContent board={board} />
-                <CommentRegisterForm />
-                <CommentList comments={comments} />
+                <CommentRegisterForm editingComment={editingComment} setEditingComment = {setEditingComment}/>
+                <CommentList comments={comments} setEditingComment = {setEditingComment} />
             </UserIdContext.Provider>
         </>
     )

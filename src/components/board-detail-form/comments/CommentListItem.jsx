@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { BoardButtons, Button } from '../BoardInfoStyled';
-import { BASE_URL } from '../../../config/BaseUrl';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { UserIdContext } from '../../../pages/BoardDetail';
+import CommentModal from '../../modal/CommentModal';
 
 const CommentListItemStyled = styled.div`
 display: flex;
@@ -54,9 +54,21 @@ margin-left: 40px;
 overflow-wrap: break-word; /* 공백 없이 긴 문자열도 줄바꿈 */
 word-break: break-all; /* 단어의 중간에서도 줄바꿈 */
 `
-const CommentListItem = ({ comment }) => {
-    const userId = useContext(UserIdContext).userId;
 
+
+const CommentListItem = ({ comment, setEditingComment }) => {
+    const userId = useContext(UserIdContext).userId;
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
+    const [modal, setModal] = useState(false);      // 모달 상태
+    // 수정 버튼 클릭 시
+    const handleEditClick = () => {
+        setEditingComment({id:comment.id,content:comment.content})
+    }
+    // 삭제 버튼 클릭 시
+    const handleDeleteClick = () => {
+        setModal(true);
+        
+    }
     return (
 
         <CommentListItemStyled>
@@ -71,13 +83,14 @@ const CommentListItem = ({ comment }) => {
 
                 <CommentContent >{comment.content}</CommentContent>
             </CommentBlock>
-            {userId===comment.userId ? (
-            <BoardButtons className="board-buttons">
-                <Button>수정</Button>
-                <Button>삭제</Button>
-            </BoardButtons>
-            ):(<></>)}
-            
+            {userId === comment.userId ? (
+                <BoardButtons className="board-buttons">
+                    <Button onClick={handleEditClick}>수정</Button>
+                    <Button onClick={handleDeleteClick} >삭제</Button>
+                    {modal ? <CommentModal onClose={() => setModal(false)} commentId = {comment.id}/> : <></>}
+                </BoardButtons>
+            ) : (<></>)}
+
         </CommentListItemStyled>
 
     )

@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import { Section, Meta, Comment, Circle, Img, Date, BoardButtons, Button } from './BoardInfoStyled';
 import { UserIdContext } from '../../pages/BoardDetail';
 import { useNavigate } from 'react-router-dom';
-import Modal from '../modal/boardModal';
+import BoardModal from '../modal/BoardModal';
 
 function BoardInfo({ board }) {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -34,7 +34,7 @@ function BoardInfo({ board }) {
         {userId === board.userId ? <BoardButtons className="board-buttons">
           <Button onClick={handleUpdate}>수정</Button>
           <Button onClick={handleDelete}>삭제</Button>
-          {modal ? <Modal onClose={() => setModal(false)}/> : <></>}
+          {modal ? <BoardModal onClose={() => setModal(false)}/> : <></>}
         </BoardButtons> : <></>}
       </Meta>
     </Section>

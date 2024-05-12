@@ -1,21 +1,22 @@
 import styled from "styled-components";
 import BoardList from "../components/boards-form/BoardList";
 import Button from "../components/ui/Button";
-import Title from "../components/ui/Title";
 // import data from "../data.json"
 import { useNavigate } from "react-router-dom";
 
+const StyledButton = styled(Button)`
+width: 138px;
+height: 39px;
+align-self: flex-end;
+border-radius: 16px;
+`
+const StyledContent = styled.span`
+text-align: center;
+font-size: 24px;
+`
+
 const Boards = () => {
-    const StyledButton = styled(Button)`
-        width: 138px;
-        height: 39px;
-        align-self: flex-end;
-        border-radius: 16px;
-    `
-    const StyledContent = styled.span`
-        text-align: center;
-        font-size: 24px;
-    `
+
 
     const navigate = useNavigate();
     return (

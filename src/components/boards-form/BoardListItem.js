@@ -6,7 +6,6 @@ const StyledBoardListItem = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-
     width: 592px;
     height: 169px;
     margin: 30px ;

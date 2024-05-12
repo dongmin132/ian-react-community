@@ -13,7 +13,7 @@ import BoardRegister from "./pages/BoardReigster";
 import { AuthProvider } from "./context/AuthContext";
 import Loading from "./components/ui/Loading";
 import BoardDetail from "./pages/BoardDetail";
-import Modal from "./components/modal/boardModal";
+
 
 const Wrapper = styled.div`
   display:flex;
@@ -50,7 +50,7 @@ function App() {
               <Route path="/boards/:boardId" element={<BoardDetail/>} />
               <Route path="/boards/register" element={<BoardRegister />} />
               <Route path="/boards/spinner" element={<Loading />} />
-              <Route path="/boards/update" element={<Modal />} />
+              
             </Routes>
           </Main>
         </Wrapper>

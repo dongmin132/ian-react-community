@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import "./BoardListItem.css";
+import { Content, Title, Meta, Info, InfoP, Coment, Circle } from "./BoardListItemStyled";
 import { BASE_URL } from "../../config/BaseUrl";
 const StyledBoardListItem = styled.div`
     display: flex;
@@ -24,23 +24,23 @@ const StyledBoardListItem = styled.div`
 const BoardListItem = ({ board, onClick }) => {
     return (
         <StyledBoardListItem onClick={onClick}>
-            <div className="content">
-                <span className="title">{board.title}</span>
-                <div className="meta">
-                    <span className="info">
-                        좋아요 <p className="likes">0 </p> &nbsp;
-                        댓글 <p className='commentCount'>{board.commentsCount} </p> &nbsp;
-                        조회수 <p className='views'>0 </p>&nbsp;
-                    </span>
-                    <span className="date">{board.createdAt}</span>
-                </div>
-            </div>
-            <div className="coment">
-                <div className="circle">
-                    <img src={`${BASE_URL}${board.memberProfileImage}`} id="writer-image" alt="writer" style={{width:"100%", height:"100%"}}/>
-                </div>
+            <Content>
+                <Title>{board.title}</Title>
+                <Meta>
+                    <Info>
+                        좋아요 <InfoP className="likes">0 </InfoP> &nbsp;
+                        댓글 <InfoP className='commentCount'>{board.commentsCount} </InfoP> &nbsp;
+                        조회수 <InfoP className='views'>0 </InfoP>&nbsp;
+                    </Info>
+                    <Info>{board.createdAt}</Info>
+                </Meta>
+            </Content>
+            <Coment>
+                <Circle>
+                    <img src={`${BASE_URL}${board.memberProfileImage}`} id="writer-image" alt="writer" style={{ width: "100%", height: "100%" }} />
+                </Circle>
                 <b id="writer">{board.memberNickname}</b>
-            </div>
+            </Coment>
         </StyledBoardListItem >
     );
 }

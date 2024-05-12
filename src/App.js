@@ -12,6 +12,8 @@ import Boards from "./pages/Boards";
 import BoardRegister from "./pages/BoardReigster";
 import { AuthProvider } from "./context/AuthContext";
 import Loading from "./components/ui/Loading";
+import BoardDetail from "./pages/BoardDetail";
+import Modal from "./components/modal/boardModal";
 
 const Wrapper = styled.div`
   display:flex;
@@ -20,6 +22,7 @@ const Wrapper = styled.div`
   min-height: 100vh;
   justify-content: center;
   align-items: center;
+  background-color: #F4F5F7;
 `
 const Main = styled.div`
     flex:1;
@@ -44,8 +47,10 @@ function App() {
               <Route index element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/boards" element={<Boards />} />
+              <Route path="/boards/:boardId" element={<BoardDetail/>} />
               <Route path="/boards/register" element={<BoardRegister />} />
               <Route path="/boards/spinner" element={<Loading />} />
+              <Route path="/boards/update" element={<Modal />} />
             </Routes>
           </Main>
         </Wrapper>

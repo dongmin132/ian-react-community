@@ -13,6 +13,7 @@ import BoardRegister from "./pages/BoardReigster";
 import { AuthProvider } from "./context/AuthContext";
 import Loading from "./components/ui/Loading";
 import BoardDetail from "./pages/BoardDetail";
+import BoardUpdate from "./pages/BoardUpdate";
 
 
 const Wrapper = styled.div`
@@ -49,7 +50,7 @@ function App() {
               <Route path="/boards" element={<Boards />} />
               <Route path="/boards/:boardId" element={<BoardDetail/>} />
               <Route path="/boards/register" element={<BoardRegister />} />
-              <Route path="/boards/spinner" element={<Loading />} />
+              <Route path="/boards/update" element={<BoardUpdate />} />
               
             </Routes>
           </Main>

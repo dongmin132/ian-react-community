@@ -31,10 +31,6 @@ const BoardRegister = () => {
         formData.append('content',content);
         formData.append('contentImage', file);
 
-        for(var pair of formData.entries()) {
-            console.log(pair[0]+ ', '+ pair[1]);
-        }
-
         fetch(`${BASE_URL}/boards`, {
             method: 'POST',
             body: formData,

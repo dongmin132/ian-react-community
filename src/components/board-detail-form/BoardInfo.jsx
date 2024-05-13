@@ -14,7 +14,7 @@ function BoardInfo({ board }) {
 
   //수정 버튼 클릭 시 수정 페이지로 이동
   const handleUpdate = () => {
-    navigate(`/boards/update`);
+    navigate(`/boards/update`, { state: {board} });
   }
 
   //삭제 버튼 클릭 시 삭제 모달 띄움

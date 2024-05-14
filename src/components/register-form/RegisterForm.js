@@ -4,6 +4,7 @@ import ProfileImage from "../ui/ProfileImage";
 import TextHelper from "../ui/TextHelper";
 import Button from "../ui/Button";
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const Form = styled.form`
 display: flex;
@@ -21,6 +22,7 @@ font-weight: bold;
 const RegisterForm = () => {
     const src = null;
     const defaultImage = `${process.env.PUBLIC_URL}/images/default-profile.png`;
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [nickname, setNickname] = useState('');
@@ -59,8 +61,11 @@ const RegisterForm = () => {
         })
             .then(response => response.json())
             .then(data => {
-                if (data.status === 201)
+                if (data.status === 201){
                     alert('회원가입 성공');
+                    navigate("/");
+                }
+                    
                 else if (data.status === 409)
                     alert('이미 존재하는 이메일입니다.');
                 else if (data.status === 413)

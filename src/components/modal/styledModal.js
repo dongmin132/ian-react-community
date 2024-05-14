@@ -8,7 +8,9 @@ left: 0;
 width: 100%;
 height: 100%;
 z-index: 11;
-background-color: rgba(0, 0, 0, 0.5); /* 반투명한 배경색 */`;
+background-color: rgba(0, 0, 0, 0.5); /* 반투명한 배경색 */
+overflow: hidden;
+`;
 
 export const ModalMain = styled.div`
 width: 408px;

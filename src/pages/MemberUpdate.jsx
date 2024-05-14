@@ -4,6 +4,8 @@ import MemberUpdateForm from "../components/member-update-form/MemberUpdateForm"
 import styled from "styled-components";
 import MemberModal from "../components/modal/MemberModal";
 import { useNavigate } from "react-router-dom";
+import Toast from "../components/ui/Toast";
+import Form from "../components/ui/Form";
 
 
 const CloseAccount = styled.span`
@@ -11,19 +13,6 @@ font-size: 14px;
 width: fit-content;
 cursor: pointer;
 margin-top: 20px;
-`
-
-const Toast = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-width: 102px;
-height:46px;
-background: #ACA0EB;
-border-radius: 30px;
-border:none;
-color: white;
-margin-top: 80px;
 `
 
 const MemberUpdate = () => {
@@ -58,7 +47,7 @@ const MemberUpdate = () => {
                     const member = data.member;
                     setUsers(member);
                     setImage(`${BASE_URL}${member.profile_image}`);
-                } else if(data.status === 401) {
+                } else if (data.status === 401) {
                     alert("로그인 후 이용하세요")
                     navigate("/");
                 } else {
@@ -103,12 +92,13 @@ const MemberUpdate = () => {
 
     return (
         <>
-            <ProfileUpdate profileImage={image} onChange={handleFileChange} />
-            <MemberUpdateForm member={users} file={file} onUpdateSuccess={handleUpdateSuccess}/>
-            <CloseAccount onClick={handleOpenModal}>회원 탈퇴</CloseAccount>
+            <Form>
+                <ProfileUpdate profileImage={image} onChange={handleFileChange} />
+                <MemberUpdateForm member={users} file={file} onUpdateSuccess={handleUpdateSuccess} />
+                <CloseAccount onClick={handleOpenModal}>회원 탈퇴</CloseAccount>
+            </Form >
             {modal && <MemberModal onClose={() => setModal(false)} />}
-            {toast && <Toast>수정 완료</Toast>}
-          
+            {toast && <Toast />}
         </>
     )
 

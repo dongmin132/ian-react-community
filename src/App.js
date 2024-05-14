@@ -15,6 +15,7 @@ import Loading from "./components/ui/Loading";
 import BoardDetail from "./pages/BoardDetail";
 import BoardUpdate from "./pages/BoardUpdate";
 import MemberUpdate from "./pages/MemberUpdate";
+import MemberPassowrdUpdate from "./pages/MemberPasswordUpdate";
 
 
 const Wrapper = styled.div`
@@ -49,10 +50,12 @@ function App() {
               <Route index element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/members/update" element={<MemberUpdate />} />
+              <Route path="/members/password" element={<MemberPassowrdUpdate />} />
               <Route path="/boards" element={<Boards />} />
               <Route path="/boards/:boardId" element={<BoardDetail/>} />
               <Route path="/boards/register" element={<BoardRegister />} />
               <Route path="/boards/update" element={<BoardUpdate />} />
+              
               
             </Routes>
           </Main>

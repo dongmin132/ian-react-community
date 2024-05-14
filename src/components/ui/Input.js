@@ -6,10 +6,12 @@ height: 33px;
 margin-bottom: 5px;
 border: 1px solid #000000;
 border-radius: 10px;
+
 `
 const StyledTitle = styled.p`
 margin-bottom: auto;
 align-self: flex-start;
+font-weight: bold;
 `
 
 const Input = (props) => {

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { BoardButtons, Button } from '../BoardInfoStyled';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { UserIdContext } from '../../../pages/BoardDetail';
 import CommentModal from '../../modal/CommentModal';
 
@@ -62,13 +62,25 @@ const CommentListItem = ({ comment, setEditingComment }) => {
     const [modal, setModal] = useState(false);      // 모달 상태
     // 수정 버튼 클릭 시
     const handleEditClick = () => {
-        setEditingComment({id:comment.id,content:comment.content})
+        setEditingComment({ id: comment.id, content: comment.content })
     }
     // 삭제 버튼 클릭 시
     const handleDeleteClick = () => {
         setModal(true);
-        
+
     }
+
+    // 모달의 상태가 변경될 때마다 실행되는 useEffect
+    useEffect(() => {
+        if (modal) {
+            // 모달이 열릴 때 body의 overflow를 hidden으로 설정
+            document.body.style.overflow = 'hidden';
+        } else {
+            // 모달이 닫힐 때 body의 overflow를 원래대로 복구
+            document.body.style.overflow = 'unset';
+        }
+    }, [modal]);
+    
     return (
 
         <CommentListItemStyled>
@@ -87,7 +99,7 @@ const CommentListItem = ({ comment, setEditingComment }) => {
                 <BoardButtons className="board-buttons">
                     <Button onClick={handleEditClick}>수정</Button>
                     <Button onClick={handleDeleteClick} >삭제</Button>
-                    {modal ? <CommentModal onClose={() => setModal(false)} commentId = {comment.id}/> : <></>}
+                    {modal ? <CommentModal onClose={() => setModal(false)} commentId={comment.id} /> : <></>}
                 </BoardButtons>
             ) : (<></>)}
 

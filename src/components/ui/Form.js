@@ -8,8 +8,8 @@ justify-content: center;
 gap:15px;
 `
 
-const Form = ({children, onSubmit}) => {
-    return <StyledForm>{children}</StyledForm>
+const Form = ({children, onSubmit, width}) => {
+    return <StyledForm width={width}>{children}</StyledForm>
 }
 
 export default Form;

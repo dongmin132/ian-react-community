@@ -14,6 +14,7 @@ import { AuthProvider } from "./context/AuthContext";
 import Loading from "./components/ui/Loading";
 import BoardDetail from "./pages/BoardDetail";
 import BoardUpdate from "./pages/BoardUpdate";
+import MemberUpdate from "./pages/MemberUpdate";
 
 
 const Wrapper = styled.div`
@@ -47,6 +48,7 @@ function App() {
             <Routes>
               <Route index element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/members/update" element={<MemberUpdate />} />
               <Route path="/boards" element={<Boards />} />
               <Route path="/boards/:boardId" element={<BoardDetail/>} />
               <Route path="/boards/register" element={<BoardRegister />} />

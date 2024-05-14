@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import { Section, Meta, Comment, Circle, Img, Date, BoardButtons, Button } from './BoardInfoStyled';
 import { UserIdContext } from '../../pages/BoardDetail';
@@ -21,6 +21,17 @@ function BoardInfo({ board }) {
   const handleDelete = () => {
     setModal(true)
   }
+
+      // 모달의 상태가 변경될 때마다 실행되는 useEffect
+      useEffect(() => {
+        if (modal) {
+            // 모달이 열릴 때 body의 overflow를 hidden으로 설정
+            document.body.style.overflow = 'hidden';
+        } else {
+            // 모달이 닫힐 때 body의 overflow를 원래대로 복구
+            document.body.style.overflow = 'unset';
+        }
+    }, [modal]);
 
   return (
     <Section>

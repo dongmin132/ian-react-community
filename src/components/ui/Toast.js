@@ -21,4 +21,5 @@ const Toast = () => {
         </StyledToast>
     )
 }
+
 export default Toast;

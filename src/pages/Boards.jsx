@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import BoardList from "../components/boards-form/BoardList";
 import Button from "../components/ui/Button";
-// import data from "../data.json"
 import { useNavigate } from "react-router-dom";
 
 const StyledButton = styled(Button)`

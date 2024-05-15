@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import { ModalBackground, ModalMain, ModalQuestion, Noti, ModalButtons, CancelButton, ConfirmButton } from './styledModal';
+import { ModalBackground, ModalMain, ModalQuestion, Noti, ModalButtons, CancelButton, ConfirmButton } from './ModalStyled';
 import { useAuth } from '../../context/AuthContext';
 
 

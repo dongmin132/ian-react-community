@@ -6,12 +6,11 @@ import {
 } from "react-router-dom";
 import styled from 'styled-components';
 import Login from './pages/Login';
-import Header from './components/Header';
+import Header from './components/header/Header';
 import Register from "./pages/Register";
 import Boards from "./pages/Boards";
 import BoardRegister from "./pages/BoardReigster";
 import { AuthProvider } from "./context/AuthContext";
-import Loading from "./components/ui/Loading";
 import BoardDetail from "./pages/BoardDetail";
 import BoardUpdate from "./pages/BoardUpdate";
 import MemberUpdate from "./pages/MemberUpdate";
@@ -55,7 +54,6 @@ function App() {
               <Route path="/boards/:boardId" element={<BoardDetail/>} />
               <Route path="/boards/register" element={<BoardRegister />} />
               <Route path="/boards/update" element={<BoardUpdate />} />
-              
               
             </Routes>
           </Main>

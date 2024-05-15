@@ -1,7 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import styled from 'styled-components';
 
-import { ModalBackground, ModalMain, ModalQuestion, Noti, ModalButtons, CancelButton, ConfirmButton } from './styledModal';
+import { ModalBackground, ModalMain, ModalQuestion, Noti, ModalButtons, CancelButton, ConfirmButton } from './ModalStyled';
 
 function BoardModal({ onClose }) {
   const navigate = useNavigate();

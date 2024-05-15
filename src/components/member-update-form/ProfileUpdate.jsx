@@ -90,7 +90,7 @@ const ProfileUpdate = ({onChange,profileImage}) => {
         <>
             <Title title="회원 정보 수정"></Title>
             <Image>
-                <span style={{ alignSelf: 'flex-start', marginLeft:'125px'}}><b>프로필 사진*</b></span>
+                <span style={{ alignSelf: 'flex-start'}}><b>프로필 사진*</b></span>
                 <Circle onClick = {openFileUploader}>
                     <ProfileImage src={profileImage} />
                     <BackgroundImage>

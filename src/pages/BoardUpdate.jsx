@@ -82,7 +82,7 @@ const BoardUpdate = () => {
 
     return (
         <>
-            <Title title="게시글 작성" />
+            <Title title="게시글 수정" />
             <Form>
                 <BoardInput title="제목*" type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
                 <BoardContentInput title="내용*" type="text" value={content} onChange={(e) => setContent(e.target.value)} />

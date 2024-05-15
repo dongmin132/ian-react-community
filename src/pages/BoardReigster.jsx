@@ -60,6 +60,8 @@ const BoardRegister = () => {
             })
     }
 
+
+
     return (
         <>
         <Title title="게시글 작성" />
@@ -69,6 +71,7 @@ const BoardRegister = () => {
             <StyledTitle>이미지</StyledTitle>
             <StyledFileInput type="file" accept="image/*" onChange={(e)=>setFile(e.target.files[0])}/>
             <Button title="완료" onClick={handleSubmit}/>
+            
         </Form>
         </>
     )

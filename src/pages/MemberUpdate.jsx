@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ProfileUpdate from "../components/board-update-form/ProfileUpdate";
+import ProfileUpdate from "../components/member-update-form/ProfileUpdate";
 import MemberUpdateForm from "../components/member-update-form/MemberUpdateForm";
 import styled from "styled-components";
 import MemberModal from "../components/modal/MemberModal";

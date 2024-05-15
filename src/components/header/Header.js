@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import './Header.css';
-import { BASE_URL } from '../config/BaseUrl';
+import { BASE_URL } from '../../config/BaseUrl';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 
 const Header = () => {
     const [profileImg, setProfileImg] = useState('');

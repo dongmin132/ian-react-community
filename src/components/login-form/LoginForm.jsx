@@ -25,7 +25,8 @@ const LogginForm = () => {
     const [isLoading, setIsLoading] = useState(false);
     const {setIsLoggedIn} = useAuth(); 
     const navigate = useNavigate();
-
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
+    const url = `${BASE_URL}/members/login`;
     const handleSubmit = async (event) => {
         event.preventDefault();
         setIsLoading(true);

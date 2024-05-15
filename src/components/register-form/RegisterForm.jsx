@@ -28,7 +28,8 @@ const RegisterForm = () => {
     const [nickname, setNickname] = useState('');
     const [selectedFile, setSelectedFile] = useState(null);
     const [image, setImage] = useState(src || defaultImage);   //이미지 미리보기
-
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
+    
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
@@ -52,7 +53,8 @@ const RegisterForm = () => {
         formData.append('nickname', nickname);
         formData.append('profileImage', selectedFile);
 
-        const url = 'http://localhost:3001/members/register';
+        const url = `${BASE_URL}/members/register`;
+        
         fetch(url, {
             method: 'POST',
             body: formData, // JSON 데이터를 문자열로 변환하여 전송

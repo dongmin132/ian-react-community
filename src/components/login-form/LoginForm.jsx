@@ -21,14 +21,26 @@ font-weight: bold;
 const LogginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    // const [isSubmitting, setIsSubmitting] = useState(false);
+    const [helperText, setHelperText] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const {setIsLoggedIn} = useAuth(); 
     const navigate = useNavigate();
     const BASE_URL = process.env.REACT_APP_BASE_URL;
     const url = `${BASE_URL}/members/login`;
+
+    const validateEmail = (email) => {
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+        if (!validateEmail(email)) {
+            setHelperText("이메일 형식이 올바르지 않습니다.");
+            return;
+        }
+
         setIsLoading(true);
 
         const data = { email, password };
@@ -60,7 +72,7 @@ const LogginForm = () => {
         <Form>
             <Input type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} title = "이메일"/>
             <Input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} title = "비밀번호" />
-            <TextHelper>아직 회원이 아니신가요?</TextHelper>
+            <TextHelper>{helperText}</TextHelper>
             <Button onClick={handleSubmit} title="로그인" >Log in</Button>
             {isLoading && <Loading/>}
         </Form>

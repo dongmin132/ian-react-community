@@ -30,15 +30,14 @@ const HelperText = styled.span``;
 
 
 function MemberUpdateForm({ member, file, onUpdateSuccess }) {
-    const defaultNickname = member.nickname;
     const [nickname, setNickname] = useState('');
     const BASE_URL = process.env.REACT_APP_BASE_URL;
     const url = `${BASE_URL}/members`;
     const navigate = useNavigate();
 
     useEffect(() => {
-        setNickname(member.nickname || '');
-    },[member.nickname]);
+        setNickname(member.memberNickname || '');
+    },[member.memberNickname]);
 
     const handleUpdate = (event) => {
         event.preventDefault();
@@ -69,7 +68,7 @@ function MemberUpdateForm({ member, file, onUpdateSuccess }) {
     return (
         <UpdateForm>
             <EmailLabel>이메일</EmailLabel>
-            <Email>{member.email}</Email>
+            <Email>{member.memberEmail}</Email>
             <NicknameLabel>닉네임</NicknameLabel>
             <NicknameInput type="text" value={nickname} onChange={(e) => (setNickname(e.target.value))} />
             <Button title="수정하기" onClick={handleUpdate}></Button>

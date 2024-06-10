@@ -6,17 +6,17 @@ const BoardContent = ({board}) => {
     const BASE_URL = process.env.REACT_APP_BASE_URL;
     return (
         <Section>
-            {board.contentImage?<Square>
-                <Image src={BASE_URL+board.contentImage}/>
+            {board.boardImage?<Square>
+                <Image src={BASE_URL+board.boardImage}/>
             </Square>:<></>}
-            <Content>{board.content}</Content>
+            <Content>{board.boardContent}</Content>
 
             <CommentLike>
                 <View>
-                    <b>123<br />조회수</b>
+                    <b>{board.boardLikeCount}<br />조회수</b>
                 </View>
                 <View>
-                    <b>123<br />댓글</b>
+                    <b>{board.boardViewCount}<br />댓글</b>
                 </View>
             </CommentLike>
         </Section>

@@ -27,14 +27,14 @@ const BoardUpdate = () => {
     const BASE_URL = process.env.REACT_APP_BASE_URL;
 
     useEffect(() => {
-        setTitle(board.title);
-        setContent(board.content);
+        setTitle(board.boardTitle);
+        setContent(board.boardContent);
     },[])
 
     const handleSubmit = (event) => {
         event.preventDefault();
         
-        const url = `${BASE_URL}/boards/${board.id}`;
+        const url = `${BASE_URL}/boards/${board.boardId}`;
         const formData = new FormData();
         if (file === null) {
             formData.append('title', title);

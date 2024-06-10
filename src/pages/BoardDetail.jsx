@@ -19,7 +19,6 @@ const BoardDetail = () => {
     const url = `${BASE_URL}/boards/${boardId}`;
 
     useEffect(function getBoard() {
-        console.log(url);
         fetch(url, {
             credentials: 'include'
         })
@@ -33,6 +32,7 @@ const BoardDetail = () => {
                     alert('없는 게시글입니다.');
                 }
             })
+
     }, [])
 
 

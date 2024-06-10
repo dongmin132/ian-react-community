@@ -16,7 +16,7 @@ const CommentList = ({comments, setEditingComment}) => {
         <CommentListStyled>
             {comments.map((comment) => {
                 return (
-                    <CommentListItem key={comment.id} comment={comment} setEditingComment={setEditingComment} />
+                    <CommentListItem key={comment.commentId} comment={comment} setEditingComment={setEditingComment} />
                 )
             })}
         </CommentListStyled>

@@ -35,14 +35,14 @@ function BoardInfo({ board }) {
 
   return (
     <Section>
-      <span style={{ fontSize: "24px", width: "fit-content" }}><b>{board.title}</b></span>
+      <span style={{ fontSize: "24px", width: "fit-content" }}><b>{board.boardTitle}</b></span>
       <Meta className="meta">
         <Comment>
           <Circle className="circle"><Img src={BASE_URL + board.memberProfileImage} alt="Profile" /></Circle>
           <b id="writer">{board.memberNickname}</b>
         </Comment>
         <Date> {board.createAt}</Date>
-        {userId === board.userId ? <BoardButtons className="board-buttons">
+        {userId === board.memberId ? <BoardButtons className="board-buttons">
           <Button onClick={handleUpdate}>수정</Button>
           <Button onClick={handleDelete}>삭제</Button>
           {modal ? <BoardModal onClose={() => setModal(false)}/> : <></>}

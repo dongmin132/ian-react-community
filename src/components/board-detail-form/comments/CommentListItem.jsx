@@ -62,7 +62,7 @@ const CommentListItem = ({ comment, setEditingComment }) => {
     const [modal, setModal] = useState(false);      // 모달 상태
     // 수정 버튼 클릭 시
     const handleEditClick = () => {
-        setEditingComment({ id: comment.id, content: comment.content })
+        setEditingComment({ id: comment.commentId, content: comment.commentContent })
     }
     // 삭제 버튼 클릭 시
     const handleDeleteClick = () => {
@@ -93,13 +93,13 @@ const CommentListItem = ({ comment, setEditingComment }) => {
                     <Date> {comment.createAt}</Date>
                 </CommentInfo>
 
-                <CommentContent >{comment.content}</CommentContent>
+                <CommentContent >{comment.commentContent}</CommentContent>
             </CommentBlock>
-            {userId === comment.userId ? (
+            {userId === comment.memberId ? (
                 <BoardButtons className="board-buttons">
                     <Button onClick={handleEditClick}>수정</Button>
                     <Button onClick={handleDeleteClick} >삭제</Button>
-                    {modal ? <CommentModal onClose={() => setModal(false)} commentId={comment.id} /> : <></>}
+                    {modal ? <CommentModal onClose={() => setModal(false)} commentId={comment.commentId} /> : <></>}
                 </BoardButtons>
             ) : (<></>)}
 

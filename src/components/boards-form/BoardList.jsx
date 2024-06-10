@@ -29,7 +29,7 @@ const BoardList = ({ onClickItem }) => {
         <div>
             {boards.map((board) => {
                 return (
-                    <BoardListItem key={board.id} board={board} onClick={() => { onClickItem(board.id) }} />
+                    <BoardListItem key={board.boardId} board={board} onClick={() => { onClickItem(board.boardId) }} />
                 );
             })}
         </div>

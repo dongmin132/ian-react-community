@@ -24,14 +24,14 @@ const BoardListItem = ({ board, onClick }) => {
     return (
         <StyledBoardListItem onClick={onClick}>
             <Content>
-                <Title>{board.title}</Title>
+                <Title>{board.boardTitle}</Title>
                 <Meta>
                     <Info>
-                        좋아요 <InfoP className="likes">0 </InfoP> &nbsp;
-                        댓글 <InfoP className='commentCount'>{board.commentsCount} </InfoP> &nbsp;
-                        조회수 <InfoP className='views'>0 </InfoP>&nbsp;
+                        좋아요 <InfoP className="likes">{board.boardLikeCount} </InfoP> &nbsp;
+                        댓글수 <InfoP className='commentCount'>{board.boardCommentCount} </InfoP> &nbsp;
+                        조회수 <InfoP className='views'>{board.boardViewCount} </InfoP>&nbsp;
                     </Info>
-                    <Info>{board.createdAt}</Info>
+                    <Info>{new Date(board.createdAt).toLocaleString()}</Info>
                 </Meta>
             </Content>
             <Coment>

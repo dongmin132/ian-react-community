@@ -46,7 +46,7 @@ const MemberUpdate = () => {
                 if (data.status === 200) {
                     const member = data.member;
                     setUsers(member);
-                    setImage(`${BASE_URL}${member.profile_image}`);
+                    setImage(`${BASE_URL}${member.memberProfileImage}`);
                 } else if (data.status === 401) {
                     alert("로그인 후 이용하세요")
                     navigate("/");
@@ -69,7 +69,7 @@ const MemberUpdate = () => {
             };
             reader.readAsDataURL(selectFile);
         } else {
-            setImage(`${BASE_URL}${users.profile_image}`);
+            setImage(`${BASE_URL}${users.memberProfileImage}`);
             setFile(null);
         }
     }

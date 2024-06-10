@@ -16,7 +16,7 @@ const Header = () => {
 
     useEffect(() => {
         console.log("isLoggedIn ", isLoggedIn)
-        fetch(`${BASE_URL}/members/getMember`, {
+        fetch(`${BASE_URL}/members/getMemberProfile`, {
             credentials: 'include'
         })
             .then((response) => response.json())
@@ -27,7 +27,7 @@ const Header = () => {
                 else if(data.status === 200){
                     const member = data.member
                     setUsers(member);
-                    setProfileImg(BASE_URL + member.profile_image);
+                    setProfileImg(BASE_URL + member.memberProfileImage);
                 }
             })
     }, [isLoggedIn]);

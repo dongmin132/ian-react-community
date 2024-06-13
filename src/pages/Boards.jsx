@@ -25,7 +25,8 @@ const increaseViewCount = (boardId) => {
         if (data.status === 200) {
             // 조회수 증가 성공
             console.log('Successfully increased view count');
-        } else {
+        } 
+        else {
             // 조회수 증가 실패
             console.error('Failed to increase view count');
         }
@@ -39,12 +40,12 @@ const Boards = () => {
     const navigate = useNavigate();
     return (
         <>
-            <StyledContent style={{textAlign : "center"}}>안녕하세요,<br></br>아무 말 대잔치 <b>게시판</b> 입니다.</StyledContent>
-            <StyledButton title="게시글 작성" onClick={() => navigate(`/boards/register`)}/>
-            <BoardList onClickItem={(boardId) => {
+            {/* <StyledButton title="게시글 작성" onClick={() => navigate(`/boards/register`)}/> */}
+            {/* <BoardList onClickItem={(boardId) => {
                         increaseViewCount(boardId);
                         navigate(`/boards/${boardId}`);
-                    }}/>
+                    }}/> */}
+            <BoardList />
         </>
     );
 }

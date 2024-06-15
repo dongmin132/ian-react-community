@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import defaultImage from "../../img/defaultImage.png";
 
+import ImageSlider from "./ImageSlider";
+
 const CommentTotal = styled.span`
     margin-top: 10px;
     color: grey;
@@ -16,6 +18,8 @@ const BoardListItem = ({ board }) => {
     const [totalLikes, setTotalLikes] = useState(board.boardTotalLikeCount);
     const [isExpanded, setIsExpanded] = useState(false);
     const navigate = useNavigate();
+
+    const imageUrls = board.boardImages ? board.boardImages.split(',').map(image => `${BASE_URL}${image}`)  : [defaultImage];
 
     const handleLike = () => {
         if (!likes) {
@@ -53,8 +57,11 @@ const BoardListItem = ({ board }) => {
                 <b id="writer">{board.memberNickname}</b>
             </Coment>
             <Content>
-                {/* <Title>{board.boardTitle}</Title> */}
-                <img src={board.boardImage?`${BASE_URL}${board.boardImage}`: defaultImage} alt="boardImage" style={{ width: "100%", height: "100%", minHeight: "500px" }} />
+                {/* <img src={board.boardImages?`${BASE_URL}${imageUrls[0]}`: defaultImage} alt="boardImage" style={{ width: "100%", height: "100%", minHeight: "500px" }} /> */}
+
+                <div>
+                    <ImageSlider images={imageUrls} />
+                </div>
                 <Meta>
                     <Info>
                         <InfoBlock>{likes ? <FullHeartStyled onClick={handleLike} /> : <EmptyHeartStyled onClick={handleLike} />}&nbsp;</InfoBlock>

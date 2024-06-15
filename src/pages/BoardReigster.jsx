@@ -20,7 +20,7 @@ align-self: flex-start;
 const BoardRegister = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
-    const [file, setFile] = useState(null);
+    const [files, setFiles] = useState(null);
     const navigate = useNavigate();
 
     const handleSubmit = (event) => {
@@ -29,7 +29,9 @@ const BoardRegister = () => {
         //formData.append를 사용하면 모든 값을 문자열로 변환한다.
         formData.append('title',title);
         formData.append('content',content);
-        formData.append('contentImage', file);
+        files.forEach((file) => {
+            formData.append('contentImage', file);
+          });
 
         fetch(`${BASE_URL}/boards`, {
             method: 'POST',
@@ -69,7 +71,7 @@ const BoardRegister = () => {
             <BoardInput title="제목*" type="text" placeholder="제목을 입력해주세요. (최대26글자)" onChange={(e)=>setTitle(e.target.value)} />
             <BoardContentInput title="내용*" type="text" placeholder="내용을 입력해주세요." onChange={(e)=>setContent(e.target.value)}/>
             <StyledTitle>이미지</StyledTitle>
-            <StyledFileInput type="file" accept="image/*" onChange={(e)=>setFile(e.target.files[0])}/>
+            <StyledFileInput type="file" accept="image/*" multiple onChange={(e)=>setFiles(Array.from(e.target.files))}/>
             <Button title="완료" onClick={handleSubmit}/>
             
         </Form>

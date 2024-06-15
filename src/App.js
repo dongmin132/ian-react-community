@@ -16,6 +16,7 @@ import BoardUpdate from "./pages/BoardUpdate";
 import MemberUpdate from "./pages/MemberUpdate";
 import MemberPassowrdUpdate from "./pages/MemberPasswordUpdate";
 import Navbar from "./components/navBar/NavBar";
+import ImageSlider from "./components/boards-form/ImageSlider";
 
 
 const Wrapper = styled.div`
@@ -71,6 +72,7 @@ function App() {
               <Route path="/boards/:boardId" element={<BoardDetail />} />
               <Route path="/boards/register" element={<BoardRegister />} />
               <Route path="/boards/update" element={<BoardUpdate />} />
+              <Route path="test" element={<ImageSlider />} />
             </Routes>
           </Main>
         </Wrapper>

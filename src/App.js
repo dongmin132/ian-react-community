@@ -17,19 +17,19 @@ import MemberUpdate from "./pages/MemberUpdate";
 import MemberPassowrdUpdate from "./pages/MemberPasswordUpdate";
 import Navbar from "./components/navBar/NavBar";
 import ImageSlider from "./components/boards-form/ImageSlider";
+import ProfileChange from "./components/profile/ProfileChange";
 
 
 const Wrapper = styled.div`
   display:flex;
-
-
-  min-height: 100vh;
   justify-content: center;
-  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: flex-end;
 
 `
 const Main = styled.div`
-    flex: 1;
+    width: 85%;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -38,43 +38,37 @@ const Main = styled.div`
 
     height: 100%;
 `
-
+const BoardsWrapper = styled.div`
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+`;
 
 function App() {
-  const [selectedPage, setSelectedPage] = useState('home');
-  const renderContent = () => {
-    switch (selectedPage) {
-      case 'home':
-        return <div> Home Page Content </div>;
-      case "noti":
-        return <div>About Page Content</div>;
-      case "contact":
-        return <div>Contact Page Content</div>;
-      default:
-        return <div>Home Page Content</div>;
-    }
-  }
-
-
   return (
     <BrowserRouter>
       <AuthProvider>
         <Wrapper>
-          <Navbar setSelectedPage={setSelectedPage} selectedPage={selectedPage} />
+          <Navbar/>
           <Main>
-            {renderContent()}
             <Routes>
               <Route index element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/members/update" element={<MemberUpdate />} />
               <Route path="/members/password" element={<MemberPassowrdUpdate />} />
-              <Route path="/boards" element={<Boards />} />
+              <Route path="/boards" element={
+              <BoardsWrapper>
+                <Boards />
+              </BoardsWrapper>
+            } />
               <Route path="/boards/:boardId" element={<BoardDetail />} />
               <Route path="/boards/register" element={<BoardRegister />} />
               <Route path="/boards/update" element={<BoardUpdate />} />
               <Route path="test" element={<ImageSlider />} />
             </Routes>
           </Main>
+          
         </Wrapper>
       </AuthProvider>
     </BrowserRouter>

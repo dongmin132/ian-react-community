@@ -6,12 +6,9 @@ import { useNavigate } from "react-router-dom";
 import defaultImage from "../../img/defaultImage.png";
 
 import ImageSlider from "./ImageSlider";
+import Comment from "./Comment";
 
-const CommentTotal = styled.span`
-    margin-top: 10px;
-    color: grey;
-    cursor: pointer;
-`
+
 const BoardListItem = ({ board }) => {
 
     const [likes, setLikes] = useState(board.boardLikeCount > 0 ? true : false);
@@ -83,9 +80,7 @@ const BoardListItem = ({ board }) => {
                         ) : null}
                     </span>
                 </LineContent>
-                <CommentTotal onClick={()=>navigate(`/boards/${board.boardId}`)}> 
-                    {board.boardCommentCount? `댓글 ${board.boardCommentCount}개 모두 보기` : null}
-                </CommentTotal>
+                <Comment board={board} />
             </Content>
         </StyledBoardListItem >
     );

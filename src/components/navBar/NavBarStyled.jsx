@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const NAVBAR_WIDTH_EXPANDED = '80px';
-export const NAVBAR_WIDTH_COLLAPSED = '10%';
+export const NAVBAR_WIDTH_COLLAPSED = '15%';
 
 export const StyledNavBar = styled.nav`
   display: flex;
@@ -14,7 +14,9 @@ export const StyledNavBar = styled.nav`
   left: 0;
   border-right: 1px solid #ccc;
   overflow-x: hidden;
-  align-items: center;
+  box-sizing: border-box;
+  padding: 20px;
+  z-index: 1;
 
   @media (max-width: 1000px) {
     box-sizing: border-box;
@@ -22,33 +24,40 @@ export const StyledNavBar = styled.nav`
   }
 `;
 
+
 export const HomeTitle = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
   height: 10%;
+
 `;
 
 export const Menu = styled.div`
   height: 70%;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 `;
 
 export const LinkStyle = styled(Link)`
   color: black;
 `;
 
-export const MenuElement = styled.button`
+export const MenuElement = styled.div`
   display: flex;
   align-items: center;
+  
   justify-content: center;
   background: none;
   border: none;
   cursor: pointer;
-  margin: 20px 0px;
+
   font-size: 16px;
-  width: 220px;
+  width: auto;
   height: 64px;
+
+
 
   & > span {
     margin-left: 10px;
@@ -56,8 +65,8 @@ export const MenuElement = styled.button`
   }
 
   @media (max-width: 1000px) {
-    justify-content: center;
-    width: 64px;
+
+
     & > span {
       display: none;
     }

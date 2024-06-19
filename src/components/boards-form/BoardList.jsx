@@ -23,13 +23,15 @@ const BoardList = ({ onClickItem }) => {
             .then((board) => {
                 const boardDatas = board.data;
                 if (board.status === 200) {
-                    console.log(boardDatas.length);
+                    if(boardDatas.length === 0) {
+                        setHasMore(false);
+                        return;
+                    }
                     setBoards((prevBoards) => [...prevBoards, ...boardDatas]);
                     console.log('boardDatas:', boardDatas);
                 }
-                else if (board.status === 404) {
-                    alert('마지막 게시글입니다');
-                    setHasMore(false); // 더 이상 데이터가 없으면 hasMore를 false로 설정
+                else {
+                    alert('게시글을 불러올 수 없습니다.');
                 }
             })
             .catch((error) => {

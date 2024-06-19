@@ -9,7 +9,7 @@ import ImageSlider from "./ImageSlider";
 import Comment from "./Comment";
 
 
-const BoardListItem = ({ board }) => {
+const BoardListItem = React.forwardRef(({ board }, ref) => {
 
     const [likes, setLikes] = useState(board.boardLikeCount > 0 ? true : false);
     const [totalLikes, setTotalLikes] = useState(board.boardTotalLikeCount);
@@ -84,6 +84,6 @@ const BoardListItem = ({ board }) => {
             </Content>
         </StyledBoardListItem >
     );
-}
+});
 
 export default BoardListItem;

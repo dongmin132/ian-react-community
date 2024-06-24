@@ -9,10 +9,14 @@ import { ReactComponent as Heart } from '../../img/heart.svg';
 import { ReactComponent as HeartActive } from '../../img/heartActive.svg';
 import { ReactComponent as TitleImage } from '../../img/title.svg';
 import { ReactComponent as MoreButton } from '../../img/moreButton.svg';
+import { ReactComponent as NewArticle } from '../../img/newArticle.svg';
+import { ReactComponent as NewArticleActive } from '../../img/newArticleActive.svg';
 import defaultProfile from '../../img/defaultProfile.png';
-import { StyledNavBar, HomeTitle, Menu, MenuElement, NotificationStyled, NotificationTitle, NotificationContent } from './NavBarStyled';
+import { StyledNavBar, HomeTitle, Menu, MenuElement } from './NavBarStyled';
 import { useFetchMember } from '../../\bhooks/useFetchMember';
 import MoreMenuContainer from './MoreMenuContainer';
+import NotificationPanel from './NotificationPanel';
+import NotiToggle from './NotiToggle';
 
 const Circle = styled.div`
 width: 30px;
@@ -35,9 +39,35 @@ const Navbar = () => {
     const { isLoggedIn, setIsLoggedIn } = useAuth();
     const [isNotificationOpen, setIsNotificationOpen] = useState(false);
     const [selectedPage, setSelectedPage] = useState('home');
-    const { users, profileImg, setProfileImg } = useFetchMember(isLoggedIn);
-    const [showMenu, setShowMenu] = useState(false);
-    const navigate = useNavigate();     //뒤로 가기 기능을 추가하기 위해 history를 사용
+    const { users, profileImg, setProfileImg } = useFetchMember(isLoggedIn);;
+    const [likeCount, setLikeCount] = useState(0);
+    const [messages, setMessages] = useState([]);
+    const [error, setError] = useState(null);
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const eventSource = new EventSource(`${BASE_URL}/boards/sse`, { withCredentials: true });
+
+        eventSource.onmessage = function (event) {
+            console.log('new message', event.data);
+            const data = JSON.parse(event.data);
+
+            setMessages((prevMessages) => [...prevMessages, data]);
+            setLikeCount(data.likeCount);
+        };
+
+        eventSource.onerror = function (event) {
+            console.error('SSE connection error', event);
+            setError('SSE connection error. Please try again later.');
+            eventSource.close(); // 연결이 끊어졌을 때 close
+        };
+
+        return () => {
+
+            eventSource.close();
+        };
+    }, []);
 
     const handleButtonClick = (page) => {
         if (selectedPage === page) {
@@ -46,15 +76,13 @@ const Navbar = () => {
         } else {
             setSelectedPage(page);
             setIsNotificationOpen(page === 'noti');
+            if(page === 'post') {
+                navigate(`/boards/register`);
+            } else if(page === 'home') {
+                navigate(`/boards`);
+            }
         }
     };
-
-    // const handleMoreButtonClick = (page) => {
-    //     setSelectedPage(page);
-    //     setIsNotificationOpen(page === 'noti');
-    //     setShowMenu(page==='more');
-    // };
-
 
 
     const logout = () => {
@@ -92,6 +120,11 @@ const Navbar = () => {
                 <MenuElement onClick={() => handleButtonClick('noti')} $isNotificationOpen={isNotificationOpen}>
                     {selectedPage === 'noti' ? <HeartActive /> : <Heart />}
                     <span style={{ fontWeight: selectedPage === 'noti' ? 'bold' : 'normal' }}>알림</span>
+                    <NotiToggle likeCount = {likeCount} $isNotificationOpen={isNotificationOpen}/>
+                </MenuElement>
+                <MenuElement onClick={() => handleButtonClick('post')} $isNotificationOpen={isNotificationOpen}>
+                    {selectedPage === 'post' ? <NewArticleActive/> : <NewArticle />}
+                    <span style={{ fontWeight: selectedPage === 'post' ? 'bold' : 'normal' }}>만들기</span>
                 </MenuElement>
                 <MenuElement onClick={() => handleButtonClick('profile')} $isNotificationOpen={isNotificationOpen}>
                     <Circle style={{ border: selectedPage === 'profile' ? '2px solid #000' : '0px solid #000' }}>
@@ -104,13 +137,10 @@ const Navbar = () => {
                 <MenuElement onClick={() => handleButtonClick('more')} $isNotificationOpen={isNotificationOpen}>
                     <MoreButton />
                     <span style={{ fontWeight: selectedPage === 'more' ? 'bold' : 'normal' }}>더 보기</span>
-                    {selectedPage === 'more' && <MoreMenuContainer logout={logout}/> }
+                    {selectedPage === 'more' && <MoreMenuContainer logout={logout} />}
                 </MenuElement>
             </LowSection>
-            <NotificationStyled $isNotificationOpen={isNotificationOpen}>
-                <NotificationTitle>알림</NotificationTitle>
-                <NotificationContent>알림부분</NotificationContent>
-            </NotificationStyled>
+            <NotificationPanel $isNotificationOpen={isNotificationOpen} messages={messages} />
         </StyledNavBar>
     );
 };

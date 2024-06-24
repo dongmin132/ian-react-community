@@ -28,7 +28,6 @@ const BoardList = ({ onClickItem }) => {
                         return;
                     }
                     setBoards((prevBoards) => [...prevBoards, ...boardDatas]);
-                    console.log('boardDatas:', boardDatas);
                 }
                 else {
                     alert('게시글을 불러올 수 없습니다.');
@@ -41,7 +40,6 @@ const BoardList = ({ onClickItem }) => {
 
     useEffect(() => {
         getBoardList();
-
     }, [page]);
 
     useEffect(() => {
@@ -55,10 +53,9 @@ const BoardList = ({ onClickItem }) => {
             {boards.map((board, index) => (
                 <BoardListItem key={board.boardId} board={board} />
             ))}
-            <div ref={ref} />
+            <div ref={ref} style={{ height: '1px' }}></div>
         </div>
     );
-
 }
 
 export default BoardList;
